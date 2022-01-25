@@ -34,14 +34,15 @@
 // return this.noOfProjects
 // }
 // project.changeName= function(newName){
+    // let prevName=this.name
 //     this.name=newName
-//     return this.name
+//     return prevName
 // }
-// project.incrementProject= function(value){
+// project.incrementProject= function(value=1){
 //     this.noOfProjects=this.noOfProjects+value
 //     return this.noOfProjects
 // }
-// project.decrementProject= function(value){
+// project.decrementProject= function(value=1){
 //     this.noOfProjects=this.noOfProjects-value
 //     return this.noOfProjects
 // }
@@ -58,14 +59,15 @@
 //         return this.noOfProjects
 //         },
 //         changeName:function(newName){
+    // let prevName=this.name
 //             this.name=newName
-//             return this.name
+            // return prevName
 //         },
-//         incrementProject:function(value){
+//         incrementProject:function(value=1){
 //             this.noOfProjects=this.noOfProjects+value
 //             return this.noOfProjects
 //         },
-//        decrementProject:function(value){
+//        decrementProject:function(value=1){
 //             this.noOfProjects=this.noOfProjects-value
 //             return this.noOfProjects
 //         },
@@ -90,14 +92,15 @@
 //             return this.noOfProjects
 //             },
 //             changeName:function(newName){
+    // let prevName=this.name
 //                 this.name=newName
-//                 return this.name
+//                 return prevName
 //             },
-//             incrementProject:function(value){
+//             incrementProject:function(value=1){
 //                 this.noOfProjects=this.noOfProjects+value
 //                 return this.noOfProjects
 //             },
-//            decrementProject:function(value){
+//            decrementProject:function(value=1){
 //                 this.noOfProjects=this.noOfProjects-value
 //                 return this.noOfProjects
 //             },
@@ -122,14 +125,15 @@ class ProjectDetail{
         return this.noOfProjects
         }
         changeName(newName){
+            let prevName=this.name
             this.name=newName
             return this.name
         }
-        incrementProject(value){
+        incrementProject(value=1){
             this.noOfProjects=this.noOfProjects+value
             return this.noOfProjects
         }
-       decrementProject(value){
+       decrementProject(value=1){
             this.noOfProjects=this.noOfProjects-value
             return this.noOfProjects
         }
