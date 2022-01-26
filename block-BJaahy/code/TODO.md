@@ -46,7 +46,7 @@ class Square{
     description(){
 alert(`The square is ${this.width} x ${this.height}`)
     }
-    get calcArea(){
+     calcArea(){
         return this.width*this.height
     }
     get area(){
@@ -64,7 +64,11 @@ class Square{
     description(){
 alert(`The square is ${this.width} x ${this.height}`)
     }
-    set area(setside){
+    calcArea(){
+        return this.width*this.height
+    }
+    set area(value){
+        let setside = Math.sqrt(value)
        this.width=setside
        this.height=setside
     }
@@ -90,8 +94,8 @@ alert(`The square is ${this.width} x ${this.height}`)
     get area(){
         return this.width*this.height
     }
-    static isEqual(){
- return square1.area===square2.area
+    static isEqual(a,b){
+ return a.area===b.area
     }
 }
 ```
@@ -175,14 +179,9 @@ class User{
     get fullName(){
         return `${this.firstName} ${this.lastName}`
     }
-    nameContains(){
-        if(typeof this.fullName===`string`){
-            return true
-        }else{
-              return false
-        }
-         
+    nameContains(str){
         
+        return `${this.firstName} ${this.lastName}`.includes(str)
     }
 }
 ```
@@ -206,5 +205,5 @@ user1.fullName
 ```
 - Check the `nameContains` method
 ```js
-user1.nameContains();
+user1.nameContains(`D`);
 ```
