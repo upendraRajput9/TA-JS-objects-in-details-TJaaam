@@ -1,15 +1,15 @@
-console.log(this.document === document); // Output
+console.log(this.document === document); // true
 
 // ------------
 
-console.log(this === window); //Output
+console.log(this === window); //ture
 
 // ------------
 
 var myFunction = function () {
   console.log(this);
 };
-myFunction(); // Output
+myFunction(); // Window{}
 
 // ------------
 
@@ -17,7 +17,7 @@ function f1() {
   'use strict';
   return this;
 }
-console.log(f1() === window); //Output
+console.log(f1() === window); //false
 
 // ------------
 
@@ -27,22 +27,23 @@ function foo() {
 }
 
 foo(); //Output ??
-
+//'Simple function call'
+//true
 // ------------
 
 // This for IIFE
 (function () {
   console.log('Anonymous function invocation');
   console.log(this === window);
-})(); //Output
-
+})(); //'Anonymous function invocation'
+//true
 // ------------
 
 var myObject = {};
 myObject.someMethod = function () {
   console.log(this);
 };
-myObject.someMethod(); //Value Of This
+myObject.someMethod(); //Value Of This {someMethod: ƒ}
 
 // ------------
 
@@ -56,9 +57,9 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // `Name: John Reed`
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // `Name: Paul Adams`
 
 // ------------
 
@@ -76,10 +77,11 @@ let user = {
   },
 };
 
-user.foo(); // Output
+user.foo(); // Simple function call
+//false
 let fun1 = user.foo1;
-fun1(); // Output ??
-user.foo1(); // Output ??
+fun1(); //true
+user.foo1(); // false
 
 // ------------
 
@@ -91,13 +93,13 @@ var obj = {
   },
 };
 
-obj.getX(); // Output ??
+obj.getX(); // Output 81
 
 var retrieveX = obj.getX;
-retrieveX(); //Output ??
+retrieveX(); //Output 9
 
 var boundGetX = retrieveX.bind(obj);
-boundGetX(); // Output ??
+boundGetX(); // Output 81
 
 // ------------
 
@@ -111,11 +113,11 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // Name: John Reed
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // Name: Paul Adams
 
-person.displayName.call(person2); // Output ??
+person.displayName.call(person2); // Name: Paul Adams
 
 // ------------
 
@@ -132,22 +134,22 @@ obj.getThis3 = obj.getThis.bind(obj);
 obj.getThis4 = obj.getThis2.bind(obj);
 
 // Output
-obj.getThis();
+obj.getThis(); //window
 
 // Output
-obj.getThis.call(a);
+obj.getThis.call(a);//window
 
 // Output
-obj.getThis2();
+obj.getThis2();//obj
 
 // Output
-obj.getThis2.call(a);
+obj.getThis2.call(a);//{a: 'a'}
 
 // Output
-obj.getThis3();
+obj.getThis3();//window
 
 // Output
-obj.getThis4();
+obj.getThis4();//obj
 
 // -------------
 
@@ -158,10 +160,10 @@ let person = {
   },
 };
 
-person.greet(); // output
+person.greet(); // hello, jay
 
 let greet = person.greet;
-greet(); // output
+greet(); // hello,
 
 // -------------
 
@@ -178,23 +180,23 @@ let person = {
     return this.name;
   },
 };
-console.log(person.details.print()); // output?
-console.log(person.print()); // output?
+console.log(person.details.print()); // Jay Details
+console.log(person.print()); // Jay Person
 
 let name1 = person.print;
 let name2 = person.details;
 
-console.log(name1()); // output?
-console.log(name2.print()); // output?
+console.log(name1()); // null
+console.log(name2.print()); // Jay Details
 
 // --------
 
 let outerFn = function () {
   let n = 5;
-  console.log(innerItem);
+  console.log(innerItem);//ReferenceError:not defined
   let innerFn = function () {
     let innerItem = 'inner';
-    console.log(n);
+    console.log(n);//5
   };
   return innerFn;
 };
@@ -210,7 +212,7 @@ let object = {
     console.log('this inside of outerFn double()');
     console.log(this);
     return this.data.map(function (item) {
-      console.log(this); // Output ???
+      console.log(this); // window
       return item * 2;
     });
   },
@@ -218,7 +220,7 @@ let object = {
     console.log('this inside of outerFn doubleArrow()');
     console.log(this);
     return this.dataDouble.map((item) => {
-      console.log(this); // Output ???
+      console.log(this); // object
       return item * 2;
     });
   },
@@ -238,7 +240,7 @@ function print() {
 }
 
 let printNameBob = print.bind(bobObj);
-console.log(printNameBob()); // output??
+console.log(printNameBob()); // Bob
 
 // -------------------
 
@@ -257,7 +259,7 @@ let obj2 = {
 };
 
 let getSecondData = obj2.printSecondData.bind(obj1);
-console.log(getSecondData()); // Output and why ???
+console.log(getSecondData()); // The output is 2 because obj1 is bind inside the obj2.printSecondData.
 
 // --------------
 
@@ -268,7 +270,7 @@ const call = {
   },
 };
 
-call.says(); // output ???
+call.says(); // `Hey, mom just called.
 
 // -----------------
 
@@ -281,7 +283,7 @@ const call = {
 
 let newCall = call.says;
 
-newCall(); // output ???
+newCall(); // Hey, undefined just called.
 
 //  -----------------
 
@@ -299,4 +301,4 @@ const call = {
 
 let newCall = call.anotherCaller;
 
-newCall(); // output ??
+newCall(); //undefined called, too!
