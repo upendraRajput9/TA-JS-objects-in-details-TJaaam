@@ -15,6 +15,15 @@
 
 
 
+
+
+function animal(location,numberOfLegs){
+let obj= Object.create(animalMethods);
+obj.location=location;
+obj.numberOfLegs=numberOfLegs
+return obj
+}
+
 let animalMethods={
     eat: function(){
 console.log(`I live in ${this.location} and I can eat`)
@@ -26,15 +35,6 @@ console.log(`I live in ${this.location} and I can eat`)
         return `I live in ${thislocation} and I have ${this.numberOfLegs}`
     }
 }
-
-function animal(location,numberOfLegs){
-let obj= Object.create(animalMethods);
-obj.location=location;
-obj.numberOfLegs=numberOfLegs
-return obj
-}
-
-
 // #### Dog
 
 // It will have all the properties and methods of the Animal. These are the extra properties and methods these dogs will have.
@@ -50,7 +50,15 @@ return obj
 // - `changeName(newName)` - accepts the name property and updates the name of the dog
 // - `changeColor(newColor)` - accepts the new color and updates the color of the dog
 // - `summary()` - returns `I am ${name} and I am of ${color} color. I can also bark`
-
+function dog(location,numberOfLegs,name,color){
+    let obj= animal(location,numberOfLegs);
+    Object.setPrototypeOf(obj,dogMethods)
+    obj.name=name;
+    obj.color=color;
+    return obj
+    }
+    
+    
 
 let dogMethods={
     bark: function(){
@@ -67,12 +75,6 @@ alert(`I am ${this.name} and I can bark 🐶`)
     }
 }
 Object.setPrototypeOf(dogMethods,animalMethods)
-function dog(name,color){
-let obj= Object.create(dogMethods);
-obj.name=name;
-obj.color=color;
-return obj
-}
 
 // #### Cat
 
@@ -92,7 +94,16 @@ return obj
 // - `changeColorOfEyes(newColor)` - accepts the new color and updates the color of the dog
 
 // - `summary()` - returns `I am ${name} and the color of my eyes are ${colorOfEyes}. I can also do meow meow
-
+function cat(location,numberOfLegs,name,colorOfEyes){
+    let obj= animal(location,numberOfLegs);
+    Object.setPrototypeOf(obj,catMethods)
+    
+    obj.name=name;
+    obj.colorOfEyes=colorOfEyes;
+    return obj
+    }
+    
+    
 let catMethods={
     meow: function(){
 alert(`I am ${thisname} and I can do mewo meow 😹`)
@@ -108,10 +119,4 @@ alert(`I am ${thisname} and I can do mewo meow 😹`)
     }
 }
 Object.setPrototypeOf(catMethods,animalMethods)
-function cat(name,colorOfEyes){
-let obj= Object.create(dogMethods);
-obj.name=name;
-obj.colorOfEyes=colorOfEyes;
-return obj
-}
 
