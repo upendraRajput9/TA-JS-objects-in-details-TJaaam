@@ -5,15 +5,23 @@
 
 // myMap function goes here
 
+Array.prototype.myMap= function(value){
+  let arr = value;
+  return this.map(n=>arr(n))
+}
+
+
 // Test the myMap function you created above
 
 let numbers = [1, 5, 6, 8, 9];
 let words = 'quick brown fox jumped over a lazy dog'.split(
   ' '
 );
+
 let doubleNum = numbers.myMap(function (num) {
   return num * 2 - 1;
 });
+
 
 let capitalWords = words
   .myMap(function (word) {
@@ -29,7 +37,9 @@ After adding the function test it using the code below.
 */
 
 // You code goes here
-
+Array.prototype.myFilter= function(value){
+  return this.filter(n=>value(n))
+}
 let even = numbers.myFilter(function (num) {
   return num % 2 === 0;
 });
@@ -50,6 +60,11 @@ Make sure it does not the changes the original array.
 */
 
 // You code goes here
+Array.prototype.shuffle= function shuffle(){
+ let newArray=this.sort(()=>Math.random()-0.5);
+ return newArray
+}
+  
 
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(numbers.shuffle());
@@ -64,7 +79,10 @@ Unique means no element should come multiple times.
 */
 
 // You code goes here
-
+Array.prototype.unique= function unique(){
+  return this.filter((v, i, a) => a.indexOf(v) === i);
+  
+ }
 // Test to check the shuffle method (It will return different output every time you call)
 let num = [1, 2, 3, 4, 2, 3, 6, 7, 7];
 let strings = 'helloworld'.split('');
@@ -78,7 +96,10 @@ array that will contain only element that is common in both the array.
 */
 
 // You code goes here
-
+Array.prototype.intersection= function intersection(arr){
+  return arr.filter((elm) => this.includes(elm) );
+  
+ }
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(num.intersection([2, 7, 11, 32])); // [2, 7]
 console.log(strings.intersection('heyworld'.split(''))); // ['h', 'e', 'o', 'w', 'r', 'l', 'd']
@@ -88,7 +109,9 @@ console.log(strings.intersection('heyworld'.split(''))); // ['h', 'e', 'o', 'w',
 and split the array into groups the length of size. If array can't be split evenly, the final
 chunk will be the remaining elements. `length` should default to 1.
 */
-
+Array.prototype.chunk= function (length){
+  return this.flatMap((v,i,a)=>[[a[i],a[i+length]]])
+}
 // You code goes here
 
 // Test to check the shuffle method (It will return different output every time you call)
