@@ -10,6 +10,35 @@ Queue
 
 1. Create a class name `Stack` with the following data and methods. Also implement a `length` getter method.
 
+```js
+class Stack{
+    constructor(stack=[]){
+        this.stack = stack
+    }
+    push(value){
+        this.stack.push(value)
+    }
+    pop(value){
+        this.stack.pop(value)
+    }
+    peek(index=this.stack.length-1){
+        return this.stack[index]
+    }
+    reverse(){
+        return this.stack.reverse()
+    }
+    isEmpty(){
+        return this.stack.length===0
+    }
+    displayStack(){
+        return this.stack.join(` `)
+    }
+    get length(){
+    return this.stack.length
+}
+}
+```
+
 Data:
 
 - `stack`
@@ -30,24 +59,48 @@ Getter
 #### Test
 
 ```js
-let myStack = new Stack();
-myStack.push('One');
-myStack.push('Two');
-console.log(myStack.length); // 2
-console.log(myStack.peek()); // "Two"
-console.log(myStack.peek(0)); // "One"
-console.log(myStack.reverse()); // ['Two', 'One']
-console.log(myStack.displayStack()); // 'Two One'
-myStack.pop();
-console.log(myStack.length); // 1
-console.log(myStack.peek()); // 'Two'
-console.log(myStack.isEmpty()); // false
-myStack.pop();
-console.log(myStack.isEmpty()); // true
+let myStack = new Stack()
+myStack.push('One')
+myStack.push('Two')
+console.log(myStack.length) // 2
+console.log(myStack.peek()) // "Two"
+console.log(myStack.peek(0)) // "One"
+console.log(myStack.reverse()) // ['Two', 'One']
+console.log(myStack.displayStack()) // 'Two One'
+myStack.pop()
+console.log(myStack.length) // 1
+console.log(myStack.peek()) // 'Two'
+console.log(myStack.isEmpty()) // false
+myStack.pop()
+console.log(myStack.isEmpty()) // true
 ```
 
 2. Create a class name `Queue` with the following data and methods. Also implement a `length` getter method.
-
+```js
+class Queue{
+    constructor(queue=[]){
+        this.queue = queue
+    }
+    enqueue(value){
+    this.queue[this.queue.length]=value
+    }
+    dequeue(){
+        this.queue=this.queue.splice(1)
+    }
+    peek(index=0){
+    return this.queue[index]
+    }
+    isEmpty(){
+        return this.queue.length===0
+    }
+    displayQueue(){
+        return this.queue.join(` `)
+    }
+    get length(){
+    return this.queue.length
+}
+}
+```
 Data:
 
 - `queue`
@@ -67,19 +120,19 @@ Getter
 #### Test
 
 ```js
-let atmQueue = new Queue();
-atmQueue.enqueue('Aman');
-atmQueue.enqueue('John');
-atmQueue.enqueue('Rohan');
-console.log(atmQueue.displayQueue()); // "Aman John Rohan"
-console.log(atmQueue.length); // 3
-console.log(atmQueue.peek()); // "Aman"
-console.log(atmQueue.peek(1)); // "John"
-atmQueue.dequeue();
-console.log(atmQueue.length); // 2
-console.log(atmQueue.peek()); // 'John'
-console.log(atmQueue.isEmpty()); // false
-atmQueue.dequeue();
-atmQueue.dequeue();
-console.log(atmQueue.isEmpty()); // true
+let atmQueue = new Queue()
+atmQueue.enqueue('Aman')
+atmQueue.enqueue('John')
+atmQueue.enqueue('Rohan')
+console.log(atmQueue.displayQueue()) // "Aman John Rohan"
+console.log(atmQueue.length) // 3
+console.log(atmQueue.peek()) // "Aman"
+console.log(atmQueue.peek(1)) // "John"
+atmQueue.dequeue()
+console.log(atmQueue.length) // 2
+console.log(atmQueue.peek()) // 'John'
+console.log(atmQueue.isEmpty()) // false
+atmQueue.dequeue()
+atmQueue.dequeue()
+console.log(atmQueue.isEmpty()) // true
 ```
