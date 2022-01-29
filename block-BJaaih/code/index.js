@@ -5,11 +5,19 @@
 
 // myMap function goes here
 
+// Array.prototype.myMap= function(value){
+//   let arr = value;
+//   return this.map(n=>arr(n))
+// }
 Array.prototype.myMap= function(value){
-  let arr = value;
-  return this.map(n=>arr(n))
+let arr =[...this];
+let final=[];
+for(let i=0;i<arr.length;i++){
+  let newValue = value(arr[i]);
+  final.push(newValue)
 }
-
+return final
+}
 
 // Test the myMap function you created above
 
@@ -37,9 +45,23 @@ After adding the function test it using the code below.
 */
 
 // You code goes here
+// Array.prototype.myFilter= function(value){
+//   return this.filter(n=>value(n))
+// }
+
 Array.prototype.myFilter= function(value){
-  return this.filter(n=>value(n))
-}
+  let arr =[...this];
+  let final=[];
+  for(let i=0;i<arr.length;i++){
+    if(value(arr[i])){
+    final.push(arr[i])
+    }
+  }
+  return final
+  }
+
+
+
 let even = numbers.myFilter(function (num) {
   return num % 2 === 0;
 });
@@ -61,7 +83,8 @@ Make sure it does not the changes the original array.
 
 // You code goes here
 Array.prototype.shuffle= function shuffle(){
- let newArray=this.sort(()=>Math.random()-0.5);
+  let arr =[...this];
+ let newArray=arr.sort(()=>Math.random()-0.5);
  return newArray
 }
   
@@ -109,8 +132,15 @@ console.log(strings.intersection('heyworld'.split(''))); // ['h', 'e', 'o', 'w',
 and split the array into groups the length of size. If array can't be split evenly, the final
 chunk will be the remaining elements. `length` should default to 1.
 */
-Array.prototype.chunk= function (length){
-  return this.flatMap((v,i,a)=>[[a[i],a[i+length]]])
+Array.prototype.chunk= function (size=1){
+  let arr=[...this];
+  let len = Math.floor(arr.length/size);
+  let final =[];
+  for(let i=0;i<=len;i++){
+  let chunk = arr.splice(0,size);
+  final.push(chunk);
+}
+return final.filter(elm=>elm.length)
 }
 // You code goes here
 
