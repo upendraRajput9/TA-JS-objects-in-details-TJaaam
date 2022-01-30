@@ -13,7 +13,7 @@
 
 Book class will have the following methods:
 
-- `markBookAsRead` when called will change the `isRead` property on the book to be `true`. It will also change the `finishedDate` to be the `Date.now()` when this function is called.
+- `` markBookAsReadwhen called will change the `isRead` property on the book to be `true`. It will also change the `finishedDate` to be the `Date.now()` when this function is called.
 
 #### BookList should have the following properties:
 
