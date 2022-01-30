@@ -1,9 +1,9 @@
 class Book {
-  constructor(title, category, author, isRead = false) {
+  constructor(title, category, author) {
     this.title = title
     this.category = this.category
     this.author = author
-    this.isRead = this.isRead
+    this.isRead = false
     this.finishedDate = `no finished`
   }
   markBookAsRead() {
@@ -17,26 +17,27 @@ class Book {
 
 class Booklist {
   constructor(...books) {
-    this.currentBook = null
+    this.currentBook = 0;
   }
   add(addBook) {
     this.books.push(addBook)
   }
   getCurrentBook(index) {
-return this.books[index]
+return this.books[this.currentBook ]
   }
-  getNextBook(index) {
-    return this.books[index+1]
+  getNextBook() {
+    this.currentBook=this.currentBook+1
+    return this.books[this.currentBook+1]
   }
-  getPrevBook(index) {
-    return this.books[index-1]
+  getPrevBook() {
+    this.currentBook=   this.currentBook-1
+    return this.books[this.currentBook-1]
   }
   changeCurrentBook(index) {
-    return this.books[index]
+    this.currentBook=index
+    return this.currentBook
   }
 }
 
-let book1= new Book(`fear`,`outo`)
-let book2=new Book(`force`,`create`)
 
  
