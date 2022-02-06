@@ -140,6 +140,7 @@ next.addEventListener(`click`,(event)=>{
      ques = new AppBody(myQuestions[count])
     ques.nextQuestion()}
 })
+submitButton.addEventListener(`cl`)
 
     
 
