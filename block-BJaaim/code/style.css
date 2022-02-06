@@ -1,0 +1,9 @@
+label{
+    display: block;
+}
+section{
+    display: flex;
+   align-items: center;
+   padding: 10rem;
+    flex-direction: column;
+}
